@@ -1,5 +1,5 @@
 "return '' is for map <expr>
-"
+
 function! fcitx#inactivate()
 	call system('fcitx-remote -c')
 	return ''

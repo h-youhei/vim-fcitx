@@ -58,7 +58,7 @@ g:fcitx#use_default_setting *g:fcitx#use_default_setting*
 	set this variable to 0 or |v:false|.
 
 ==============================================================================
-FAQ |vim-fcitx-faq|
+FAQ *vim-fcitx-faq*
 
 *vim-fcitx-search*
 Q: How can I handle fcitx state automatically when I enter/leave search command.
