@@ -14,7 +14,7 @@ FAQ |vim-fcitx-faq|
 ==============================================================================
 INTRODUCTION *vim-fcitx-introduction*
 
-vim-fcitx turn off fcitx when you leave INSERT mode.
+vim-fcitx turn fcitx off when you leave INSERT mode.
 vim-fcitx restore fcitx state when you enter INSERT mode.
 
 vim-fcitx provide the way to
@@ -41,11 +41,14 @@ fcitx#toggle() *fcitx#toggle()*
 	toggle fcitx
 
 fcitx#is_on() *fcitx#is_on()*
-	return fcitx state: on is true, off is false
+	return fcitx state
+	if fcitx
+		on: |v:true|
+		off: |v:false|
 
 fcitx#inactivate_with_state() *fcitx#inactivate_with_state()*
-	turn fcitx off.
-	and keep fcitx state.
+	turn fcitx off
+	and keep fcitx state
 
 fcitx#restore_state() *fcitx#restore_state()*
 	restore fcitx state that is kept by |fcitx#inactivate_with_state()|
@@ -53,17 +56,31 @@ fcitx#restore_state() *fcitx#restore_state()*
 ==============================================================================
 VARIABLES *vim-fcitx-variables*
 
-g:fcitx#use_default_setting *g:fcitx#use_default_setting*
-	If your prefer behavior is different from default,
-	set this variable to 0 or |v:false|.
+g:fcitx#handle_insert_mode *g:fcitx#handle_insert_mode*
+	type: bool
+	default: |v:true|
+
+	Whether the plugin does setting for handling insert mode,
+	If you do setting yourself, set this variable to 0 or |v:false|.
+
+g:fcitx#handle_search_command *g:fcitx#handle_search_command*
+	type: bool
+	default: |v:false|
+
+	Whether the plugin does setting for handling search mode.
+	See |vim-fcitx-search|
 
 ==============================================================================
 FAQ *vim-fcitx-faq*
 
 *vim-fcitx-search*
-Q: How can I handle fcitx state automatically when I enter/leave search command.
+Q: How can I handle fcitx state automatically when I enter/leave search command?
 
 A:
+>
+	let g:fcitx#handle_search_mode = v:true
+<
+If you want to do setting more flexible, you can refer below code.
 >
 	nnoremap <expr> / (fcitx#restore_state() . '/')
 	nnoremap <expr> ? (fcitx#restore_state() . '?')
