@@ -1,13 +1,16 @@
 if exists('g:loaded_vim_fcitx')
 	finish
 endif
+if !executable('fcitx-remote')
+	finish
+endif
+if system('fcitx-remote') =~ 'Not get reply'
+	finish
+endif
 
 let s:save_cpo = &cpo
 set cpo&vim
 
-if !executable('fcitx-remote')
-	finish
-endif
 
 if !exists('g:fcitx#handle_insert_mode')
 	let g:fcitx#handle_insert_mode = v:true
