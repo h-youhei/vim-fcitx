@@ -21,11 +21,11 @@ endif
 
 augroup fcitx
 	autocmd!
+	au BufEnter,CmdwinEnter * let b:was_fcitx_on = v:false
 augroup END
 
 if g:fcitx#handle_insert_mode
 	augroup fcitx
-		au BufEnter,CmdwinEnter * let b:was_fcitx_on = 0
 		au InsertLeave * call fcitx#inactivate_with_state()
 		au InsertEnter * call fcitx#restore_state()
 	augroup END
