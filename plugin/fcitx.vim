@@ -19,12 +19,13 @@ if !exists('g:fcitx#commandline_behavior')
 	let g:fcitx#commandline_behavior = 'off'
 endif
 
+"remove these lines on 2019/7/22
 if exists('g:fcitx#handle_insert_mode')
 	echo 'g:fcitx#handle_insert_mode is removed.'
 	echo 'use g:fcitx#insert_mode_behavior instead.'
 endif
 if exists('g:fcitx#handle_search_command')
-	echo 'g:ibus#handle_search_command is removed.'
+	echo 'g:fcitx#handle_search_command is removed.'
 	echo 'use g:fcitx#commandline_behavior instead.'
 endif
 
