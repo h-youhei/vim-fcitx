@@ -57,36 +57,33 @@ fcitx#restore_state() *fcitx#restore_state()*
 ==============================================================================
 VARIABLES *vim-fcitx-variables*
 
-g:fcitx#handle_insert_mode *g:fcitx#handle_insert_mode*
-	type: bool
-	default: |v:true|
+g:fcitx#insert_mode_behavior *g:fcitx#insert_mode_behavior*
+	type: string
+	default: 'restore'
+	available: 'restore' 'off' 'nothing'
 
-	Whether the plugin does setting for handling insert mode,
-	If you do setting yourself, set this variable to 0 or |v:false|.
+	'restore'
+		turn off fcitx when you leave insert mode.
+		restore fcitx state when you re-enter insert mode.
+	'off'
+		turn off fcitx when you leave insert mode.
+	'nothing'
+		do nothing
 
-g:fcitx#handle_search_command *g:fcitx#handle_search_command*
-	type: bool
-	default: |v:false|
+g:fcitx#commandline_behavior *g:fcitx#commandline_behavior*
+	type: string
+	default: 'restore'
+	available: 'restore' 'off' 'nothing'
 
-	Whether the plugin does setting for handling search mode.
-	For more information, see |vim-fcitx-search|.
+	'restore'
+		turn off fcitx when you leave command line.
+		restore fcitx state when you search again.
+	'off'
+		turn off fcitx when you leave command line.
+	'nothing'
+		do nothing
 
 ==============================================================================
 FAQ *vim-fcitx-faq*
-
-*vim-fcitx-search*
-Q: How can I handle fcitx state automatically when I enter/leave search command?
-
-A:
->
-	let g:fcitx#handle_search_command = v:true
-<
-If you want to do setting more flexible, you can refer below code.
->
-	nnoremap <expr> / (fcitx#restore_state() . '/')
-	nnoremap <expr> ? (fcitx#restore_state() . '?')
-	cnoremap <expr> <CR> (fcitx#inactivate_with_state() . '<CR>')
-	cnoremap <expr> <Esc> (fcitx#inactivate_with_state() . '<C-u><BS>')
-<
 
 vim:tw=78:ts=8:sw=8:sts=0:ft=help:norl:noet:fen:fdl=0
