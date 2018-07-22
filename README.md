@@ -1,5 +1,5 @@
 # vim-fcitx
-vim-fcitx turn off fcitx when you leave INSERT mode.
+vim-fcitx turn off fcitx when you leave INSERT mode or search command.
 
 vim-fcitx restore fcitx state when you enter INSERT mode.
 
